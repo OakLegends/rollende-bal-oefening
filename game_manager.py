@@ -13,6 +13,14 @@ class GameManager:
                 if event.type == pygame.QUIT:
                     running = False
 
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_UP:
+                        self.ball.speed_x *= 1.15
+                        self.ball.speed_y *= 1.15
+                    elif event.key == pygame.K_DOWN:
+                        self.ball.speed_x *= 0.85
+                        self.ball.speed_y *= 0.85
+
             self.ball.update()
 
             self.screen.fill((0, 0, 0))
