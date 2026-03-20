@@ -1,10 +1,11 @@
 import pygame
 
 class GameManager:
-    def __init__(self, screen, clock, ball):
+    def __init__(self, screen, clock, ball, background=None):
         self.screen = screen
         self.clock = clock
         self.ball = ball
+        self.background = background
         self.font = pygame.font.SysFont("segoeui", 28)
 
     def main(self):
@@ -22,11 +23,15 @@ class GameManager:
 
             self.ball.update()
 
-            self.screen.fill((12, 12, 28))  # iets donkerder blauwzwart
+            # Achtergrond tekenen
+            if self.background is not None:
+                self.screen.blit(self.background, (0, 0))
+            else:
+                self.screen.fill((12, 12, 28))
 
             self.ball.draw()
 
-            # Toon huidige snelheid (totaal)
+            # Snelheidsinfo
             total_speed = abs(self.ball.speed_x) + abs(self.ball.speed_y)
             text = self.font.render(f"Snelheid: {total_speed:.1f}", True, (220, 220, 240))
             self.screen.blit(text, (20, 20))
