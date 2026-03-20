@@ -23,7 +23,6 @@ class GameManager:
 
             self.ball.update()
 
-            # Achtergrond tekenen
             if self.background is not None:
                 self.screen.blit(self.background, (0, 0))
             else:
@@ -31,7 +30,6 @@ class GameManager:
 
             self.ball.draw()
 
-            # Snelheidsinfo
             total_speed = abs(self.ball.speed_x) + abs(self.ball.speed_y)
             text = self.font.render(f"Snelheid: {total_speed:.1f}", True, (220, 220, 240))
             self.screen.blit(text, (20, 20))
